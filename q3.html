@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="margin:0; font-family:Arial, sans-serif; background:#f3f4f6;">
+
+<!-- FIXED HEADER -->
+<div style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#1f2933;
+    color:white;
+    padding:15px;
+    text-align:center;
+    z-index:1000;
+">
+    <h2 style="margin:0;">Online Product Gallery</h2>
+</div>
+
+<!-- SCROLLABLE CONTENT -->
+<div style="
+    margin-top:80px;
+    margin-bottom:70px;
+    height:calc(100vh - 150px);
+    overflow-y:auto;
+    padding:20px;
+">
+
+    <!-- GALLERY -->
+    <div style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:20px;
+        justify-content:center;
+    ">
+
+        <!-- PRODUCT CARD -->
+        <div style="
+            width:250px;
+            background:white;
+            border:2px solid #d1d5db;
+            padding:15px;
+            margin:10px;
+            border-radius:10px;
+            position:relative;
+            box-shadow:0 4px 8px rgba(0,0,0,0.1);
+        ">
+
+            <!-- IMAGE CONTAINER -->
+            <div style="position:relative;">
+                <img src="https://via.placeholder.com/250x150"
+                     alt="Product"
+                     style="width:100%; border-radius:8px;">
+
+                <!-- IMAGE OVERLAY -->
+                <div style="
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    background:rgba(0,0,0,0.6);
+                    color:white;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    opacity:0;
+                    transition:0.3s;
+                "
+                onmouseover="this.style.opacity='1'"
+                onmouseout="this.style.opacity='0'">
+                    <span style="font-weight:bold;">View Details</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top:10px;">Smart Watch</h3>
+            <p style="font-size:14px; color:#4b5563;">
+                A modern smartwatch with fitness tracking features.
+            </p>
+        </div>
+
+        <!-- PRODUCT CARD (RELATIVE POSITION) -->
+        <div style="
+            width:250px;
+            background:white;
+            border:2px solid #d1d5db;
+            padding:15px;
+            margin:10px;
+            border-radius:10px;
+            position:relative;
+            top:10px;
+        ">
+            <img src="https://via.placeholder.com/250x150" style="width:100%;">
+            <h3>Wireless Headphones</h3>
+            <p>High-quality sound with noise cancellation.</p>
+        </div>
+
+        <!-- PRODUCT CARD (STATIC DEFAULT) -->
+        <div style="
+            width:250px;
+            background:white;
+            border:2px solid #d1d5db;
+            padding:15px;
+            margin:10px;
+            border-radius:10px;
+            position:static;
+        ">
+            <img src="https://via.placeholder.com/250x150" style="width:100%;">
+            <h3>Gaming Mouse</h3>
+            <p>Ergonomic design with customizable buttons.</p>
+        </div>
+
+    </div>
+
+    <!-- STICKY NOTE -->
+    <div style="
+        position:sticky;
+        top:0;
+        background:#fde68a;
+        padding:10px;
+        margin-top:20px;
+        text-align:center;
+        font-weight:bold;
+    ">
+        🔔 Scroll to explore more products!
+    </div>
+
+</div>
+
+<!-- FIXED FOOTER -->
+<div style="
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#1f2933;
+    color:white;
+    text-align:center;
+    padding:10px;
+">
+    <p style="margin:0;">© 2026 Product Gallery</p>
+</div>
+
+</body>
+</html>

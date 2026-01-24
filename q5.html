@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    background:#f3f4f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+">
+
+<div style="
+    background:white;
+    width:420px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+">
+
+    <h2 style="text-align:center;">📝 My To-Do List</h2>
+
+    <!-- INPUT -->
+    <input id="taskInput" type="text" placeholder="Enter task"
+           style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <input id="dateInput" type="date"
+           style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <button onclick="addTask()"
+            style="width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:5px;">
+        Add Task
+    </button>
+
+    <!-- FILTER -->
+    <div style="margin-top:15px; text-align:center;">
+        <button onclick="filterTasks('all')">All</button>
+        <button onclick="filterTasks('completed')">Completed</button>
+        <button onclick="filterTasks('pending')">Pending</button>
+    </div>
+
+    <!-- TASK LIST -->
+    <ul id="taskList" style="list-style:none; padding:0; margin-top:20px;"></ul>
+
+</div>
+
+<script>
+/* TASK ARRAY */
+let tasks = [
+    {
+        name: "Complete HTML Assignment",
+        due: new Date("2026-02-01"),
+        completed: true
+    },
+    {
+        name: "Prepare for JavaScript Exam",
+        due: new Date("2026-02-10"),
+        completed: false
+    }
+];
+
+let currentFilter = "all";
+
+/* DISPLAY TASKS */
+function displayTasks() {
+    let list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    let filteredTasks = tasks.filter(task => {
+        if (currentFilter === "completed") return task.completed;
+        if (currentFilter === "pending") return !task.completed;
+        return true;
+    });
+
+    filteredTasks.sort((a, b) => a.due - b.due);
+
+    filteredTasks.forEach((task, index) => {
+        let li = document.createElement("li");
+
+        li.style = `
+            background:#f9fafb;
+            padding:10px;
+            margin-bottom:10px;
+            border-radius:6px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        `;
+
+        let text = document.createElement("span");
+        text.innerHTML = `
+            <strong>${task.name}</strong><br>
+            <small>Due: ${task.due.toDateString()}</small>
+        `;
+
+        if (task.completed) {
+            text.style.textDecoration = "line-through";
+            text.style.color = "green";
+        }
+
+        let actions = document.createElement("div");
+
+        let checkBtn = document.createElement("button");
+        checkBtn.innerText = "✔";
+        checkBtn.onclick = () => toggleTask(index);
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "🗑";
+        deleteBtn.onclick = () => deleteTask(index);
+
+        actions.appendChild(checkBtn);
+        actions.appendChild(deleteBtn);
+
+        li.appendChild(text);
+        li.appendChild(actions);
+
+        list.appendChild(li);
+    });
+}
+
+/* ADD TASK */
+function addTask() {
+    let name = document.getElementById("taskInput").value;
+    let date = document.getElementById("dateInput").value;
+
+    if (name === "" || date === "") {
+        alert("Please enter task and due date");
+        return;
+    }
+
+    tasks.push({
+        name: name,
+        due: new Date(date),
+        completed: false
+    });
+
+    document.getElementById("taskInput").value = "";
+    document.getElementById("dateInput").value = "";
+
+    displayTasks();
+}
+
+/* TOGGLE COMPLETE */
+function toggleTask(index) {
+    tasks[index].completed = !tasks[index].completed;
+    displayTasks();
+}
+
+/* DELETE TASK */
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    displayTasks();
+}
+
+/* FILTER */
+function filterTasks(type) {
+    currentFilter = type;
+    displayTasks();
+}
+
+/* INITIAL DISPLAY */
+displayTasks();
+</script>
+
+</body>
+</html>

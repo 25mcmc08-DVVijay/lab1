@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="
+    font-family:Arial, sans-serif;
+    background:#f3f4f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+">
+
+<form id="regForm"
+      onsubmit="return validateForm()"
+      style="
+        background:white;
+        padding:25px;
+        width:350px;
+        border-radius:10px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      ">
+
+    <h2 style="text-align:center;">Registration Form</h2>
+
+    <!-- NAME -->
+    <label>Name</label>
+    <input type="text" id="name"
+           onkeyup="validateName()"
+           style="width:100%; padding:8px;">
+    <span id="nameError" style="color:red; font-size:12px;"></span>
+
+    <!-- EMAIL -->
+    <label>Email</label>
+    <input type="text" id="email"
+           onkeyup="validateEmail()"
+           style="width:100%; padding:8px;">
+    <span id="emailError" style="color:red; font-size:12px;"></span>
+
+    <!-- PASSWORD -->
+    <label>Password</label>
+    <input type="password" id="password"
+           onkeyup="validatePassword()"
+           style="width:100%; padding:8px;">
+    <span id="passwordError" style="color:red; font-size:12px;"></span>
+
+    <!-- PASSWORD STRENGTH -->
+    <div id="strength"
+         style="margin-top:5px; font-size:13px;"></div>
+
+    <!-- DATE OF BIRTH -->
+    <label>Date of Birth</label>
+    <input type="date" id="dob"
+           onchange="validateDOB()"
+           style="width:100%; padding:8px;">
+    <span id="dobError" style="color:red; font-size:12px;"></span>
+
+    <!-- PHONE -->
+    <label>Phone Number</label>
+    <input type="text" id="phone"
+           onkeyup="validatePhone()"
+           style="width:100%; padding:8px;">
+    <span id="phoneError" style="color:red; font-size:12px;"></span>
+
+    <br><br>
+
+    <button type="submit"
+            style="
+                width:100%;
+                padding:10px;
+                background:#2563eb;
+                color:white;
+                border:none;
+                border-radius:5px;
+                font-size:16px;
+            ">
+        Register
+    </button>
+
+</form>
+
+<script>
+/* NAME VALIDATION */
+function validateName() {
+    let name = document.getElementById("name").value;
+    let pattern = /^[A-Za-z ]+$/;
+
+    if (!pattern.test(name)) {
+        document.getElementById("nameError").innerText =
+            "Only alphabets allowed";
+        return false;
+    }
+    document.getElementById("nameError").innerText = "";
+    return true;
+}
+
+/* EMAIL VALIDATION */
+function validateEmail() {
+    let email = document.getElementById("email").value;
+    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!pattern.test(email)) {
+        document.getElementById("emailError").innerText =
+            "Invalid email format";
+        return false;
+    }
+    document.getElementById("emailError").innerText = "";
+    return true;
+}
+
+/* PASSWORD VALIDATION + STRENGTH */
+function validatePassword() {
+    let pass = document.getElementById("password").value;
+    let strength = 0;
+
+    if (pass.length >= 8) strength++;
+    if (/[A-Z]/.test(pass)) strength++;
+    if (/[a-z]/.test(pass)) strength++;
+    if (/[0-9]/.test(pass)) strength++;
+    if (/[^A-Za-z0-9]/.test(pass)) strength++;
+
+    // Using Math object
+    let percent = Math.min(Math.round((strength / 5) * 100), 100);
+
+    let strengthText = "";
+    if (percent < 40) strengthText = "Weak";
+    else if (percent < 80) strengthText = "Medium";
+    else strengthText = "Strong";
+
+    document.getElementById("strength").innerText =
+        "Password Strength: " + strengthText + " (" + percent + "%)";
+
+    if (strength < 5) {
+        document.getElementById("passwordError").innerText =
+            "Password must include uppercase, lowercase, number & special character";
+        return false;
+    }
+
+    document.getElementById("passwordError").innerText = "";
+    return true;
+}
+
+/* DOB VALIDATION */
+function validateDOB() {
+    let dob = new Date(document.getElementById("dob").value);
+    let today = new Date();
+
+    let age = today.getFullYear() - dob.getFullYear();
+    let m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
+
+    if (age < 18) {
+        document.getElementById("dobError").innerText =
+            "You must be at least 18 years old";
+        return false;
+    }
+
+    document.getElementById("dobError").innerText = "";
+    return true;
+}
+
+/* PHONE VALIDATION */
+function validatePhone() {
+    let phone = document.getElementById("phone").value;
+    let pattern = /^[0-9]{10}$/;
+
+    if (!pattern.test(phone)) {
+        document.getElementById("phoneError").innerText =
+            "Phone must be exactly 10 digits";
+        return false;
+    }
+
+    document.getElementById("phoneError").innerText = "";
+    return true;
+}
+
+/* FINAL FORM VALIDATION */
+function validateForm() {
+    if (
+        validateName() &&
+        validateEmail() &&
+        validatePassword() &&
+        validateDOB() &&
+        validatePhone()
+    ) {
+        alert("Registration Successful!");
+        return true;
+    }
+    alert("Please fix the errors before submitting");
+    return false;
+}
+</script>
+
+</body>
+</html>

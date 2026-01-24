@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechNova Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CDN -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        section {
+            padding: 20px;
+        }
+
+        .company-highlight {
+            color: darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-dark text-white text-center p-4">
+    <h1>TechNova Solutions</h1>
+    <p style="color: lightgray;">Innovating the Future</p> <!-- Inline CSS -->
+</header>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">TechNova</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="container my-4">
+
+    <!-- Bootstrap Grid + Flexbox -->
+    <div class="row">
+
+        <!-- MAIN SECTION -->
+        <section class="col-md-8">
+            <article class="content-box">
+                <h2>Welcome to <span class="company-highlight">TechNova</span></h2>
+                <p>
+                    TechNova Solutions is a fictional company providing innovative
+                    web and software solutions for businesses worldwide.
+                </p>
+
+                <p>
+                    Our mission is to deliver high-quality, scalable, and secure
+                    digital products.
+                </p>
+            </article>
+
+            <article class="content-box">
+                <h3>Our Services</h3>
+                <ul>
+                    <li>Web Development</li>
+                    <li>Mobile App Development</li>
+                    <li>Cloud Solutions</li>
+                    <li>AI & Data Analytics</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside class="col-md-4 sidebar">
+            <h4>Latest News</h4>
+            <p>New product launch coming soon!</p>
+
+            <h4>Contact Info</h4>
+            <p>Email: info@technova.com</p>
+            <p>Phone: +91 90876 54321</p>
+        </aside>
+
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    <p>&copy; 2026 TechNova Solutions | All Rights Reserved</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

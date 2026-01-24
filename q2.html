@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Personal Blog</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A personal blog sharing thoughts on technology, learning, and life.">
+    <meta name="keywords" content="blog, personal blog, technology, learning">
+    <meta name="author" content="Your Name">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body style="
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background-color:#f4f6f8;
+    color:#333;
+">
+
+<!-- HEADER -->
+<header style="
+    background-color:#1e3a8a;
+    color:white;
+    padding:30px;
+    text-align:center;
+">
+    <h1 style="margin:0;">My Personal Blog</h1>
+    <p style="margin-top:10px;">Sharing ideas, stories & experiences</p>
+</header>
+
+<!-- MAIN CONTENT -->
+<div style="
+    display:flex;
+    flex-wrap:wrap;
+    padding:20px;
+    gap:20px;
+">
+
+    <!-- BLOG POSTS -->
+    <div style="
+        flex:3;
+        background-color:white;
+        padding:20px;
+        border-radius:8px;
+    ">
+
+        <article>
+            <h2 style="color:#1e40af;">My First Blog Post</h2>
+            <p style="font-size:14px; color:gray;">
+                Posted on <span style="color:#2563eb;">January 2026</span>
+            </p>
+
+            <p>
+                Welcome to my blog! This is my first post where I share my journey
+                of learning web development and programming.
+            </p>
+
+            <p>
+                I enjoy working with <span style="color:#dc2626; font-weight:bold;">HTML</span>,
+                <span style="color:#2563eb; font-weight:bold;">CSS</span>, and JavaScript.
+            </p>
+        </article>
+
+        <hr>
+
+        <article>
+            <h2 style="color:#1e40af;">Why I Love Web Development</h2>
+            <p>
+                Web development allows creativity and logic to work together.
+                Designing responsive websites is both fun and challenging.
+            </p>
+        </article>
+
+        <!-- DISQUS COMMENT SECTION -->
+        <div id="disqus_thread" style="margin-top:40px;"></div>
+
+        <script>
+            var disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = "blog-page-1";
+            };
+
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://YOUR-DISQUS-SHORTNAME.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div style="
+        flex:1;
+        background-color:#e0e7ff;
+        padding:20px;
+        border-radius:8px;
+    ">
+        <h3>About Me</h3>
+        <p>
+            Hi! I'm a student passionate about technology, coding, and learning new skills.
+        </p>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>Technology</li>
+            <li>Programming</li>
+            <li>Personal Growth</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="
+    background-color:#1e3a8a;
+    color:white;
+    text-align:center;
+    padding:15px;
+">
+    <p>&copy; 2026 My Personal Blog | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
